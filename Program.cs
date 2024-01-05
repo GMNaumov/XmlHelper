@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            ExampleSystemXml systemXml = new ExampleSystemXml();
+            systemXml.Run();
         }
     }
 }
