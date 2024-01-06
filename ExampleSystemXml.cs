@@ -48,25 +48,28 @@ namespace XmlHelper
             xDoc.Load("people.xml");
             XmlElement? xRoot = xDoc.DocumentElement;
 
-            XmlElement personElem = xDoc.CreateElement("person");
-            XmlAttribute nameAttr = xDoc.CreateAttribute("name");
+            XmlElement personElem = xDoc.CreateElement("person"); // Создаём новый элемент с именем person
 
-            XmlElement companyElem = xDoc.CreateElement("company");
+            XmlAttribute nameAttr = xDoc.CreateAttribute("name"); // Создаём атрибут с именем name
+
+            XmlElement companyElem = xDoc.CreateElement("company"); // Создаём элементы company и age
             XmlElement ageElem = xDoc.CreateElement("age");
 
-            XmlText nameText = xDoc.CreateTextNode("George");
+            XmlText nameText = xDoc.CreateTextNode("George"); // Создаём текстовые значения для атрибута и элементов
             XmlText companyText = xDoc.CreateTextNode("NHC");
             XmlText ageText = xDoc.CreateTextNode("35");
 
-            nameAttr.AppendChild(nameText);
-            companyElem.AppendChild(companyText);
+            nameAttr.AppendChild(nameText); // Добавляем значение атрибуту name
+
+            companyElem.AppendChild(companyText); // Добавляем значения элементам company и age
             ageElem.AppendChild(ageText);
 
-            personElem.Attributes.Append(nameAttr);
-            personElem.AppendChild(companyElem);
+            personElem.Attributes.Append(nameAttr); // Связываем атрибут name с элементом person
+
+            personElem.AppendChild(companyElem); // Добавляем элементы company и age как дочерние элементы для person
             personElem.AppendChild(ageElem);
 
-            xRoot?.AppendChild(personElem);
+            xRoot?.AppendChild(personElem); // Добавляем элемент person как дочерний элемент к корневому
             xDoc.Save("people.xml");
         }
     }
