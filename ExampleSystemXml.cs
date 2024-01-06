@@ -4,7 +4,7 @@ namespace XmlHelper
 {
     public class ExampleSystemXml
     {
-        public void Run()
+        public void ReadXmlFile()
         {
             List<Person> persons = new List<Person>();
 
@@ -40,6 +40,34 @@ namespace XmlHelper
             {
                 Console.WriteLine($"{person.Name}. Age:{person.Age}, company:{person.Company}");
             }
+        }
+
+        public void EditXmlFile()
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("people.xml");
+            XmlElement? xRoot = xDoc.DocumentElement;
+
+            XmlElement personElem = xDoc.CreateElement("person");
+            XmlAttribute nameAttr = xDoc.CreateAttribute("name");
+
+            XmlElement companyElem = xDoc.CreateElement("company");
+            XmlElement ageElem = xDoc.CreateElement("age");
+
+            XmlText nameText = xDoc.CreateTextNode("George");
+            XmlText companyText = xDoc.CreateTextNode("NHC");
+            XmlText ageText = xDoc.CreateTextNode("35");
+
+            nameAttr.AppendChild(nameText);
+            companyElem.AppendChild(companyText);
+            ageElem.AppendChild(ageText);
+
+            personElem.Attributes.Append(nameAttr);
+            personElem.AppendChild(companyElem);
+            personElem.AppendChild(ageElem);
+
+            xRoot?.AppendChild(personElem);
+            xDoc.Save("people.xml");
         }
     }
 }
