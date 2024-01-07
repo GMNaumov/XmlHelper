@@ -7,6 +7,7 @@
             ExampleSystemXml systemXml = new ExampleSystemXml();
             systemXml.EditXmlFile();
             systemXml.ReadXmlFile();
+            systemXml.UseXpath();
         }
     }
 }

@@ -72,5 +72,46 @@ namespace XmlHelper
             xRoot?.AppendChild(personElem); // Добавляем элемент person как дочерний элемент к корневому
             xDoc.Save("people.xml");
         }
+
+
+        /// <summary>
+        /// Пример использования XPath при обработке файла XML
+        /// </summary>
+        public void UseXpath()
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load("people.xml");
+            XmlElement? xRoot = xDoc.DocumentElement;
+
+            XmlNodeList? nodes = xRoot.SelectNodes("*"); // Выбираем все дочерние элементы текущего узла ("*") 
+            if (nodes is not null)
+            {
+                foreach (XmlNode node in nodes)
+                {
+                    Console.WriteLine(node.OuterXml);
+                }
+            }
+
+            XmlNodeList? personNodes = xRoot.SelectNodes("person"); // Выбираем все элементы <person>...</person> ("person")
+            if (personNodes is not null)
+            {
+                foreach (XmlNode node in personNodes)
+                {
+                    Console.WriteLine(node.SelectSingleNode("@name")?.Value); // В выбранных элементах получаем атрибут по имени name ("@name") и выводим его значение
+                }
+            }
+
+            XmlNode? tomNode = xRoot?.SelectSingleNode("person[@name='Tom']"); // Выбираем один элемент person со значение атрибута name - Tom <person name='Tom'>...</person> ("person[@name='Tom']")
+            Console.WriteLine(tomNode?.OuterXml);
+
+            XmlNodeList? companyNodes = xRoot?.SelectNodes("//person/company"); // Выбираем все элементы company, являющиеся дочерними по отношению к элементам person
+            if (companyNodes is not null)
+            {
+                foreach (XmlNode node in companyNodes)
+                {
+                    Console.WriteLine(node.InnerText);
+                }
+            }
+        }
     }
 }
