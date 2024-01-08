@@ -1,4 +1,5 @@
 ﻿using System.Xml;
+using System.Xml.Linq;
 
 namespace XmlHelper
 {
@@ -112,6 +113,36 @@ namespace XmlHelper
                     Console.WriteLine(node.InnerText);
                 }
             }
+        }
+
+        public void UseLinqToXml()
+        {
+            XDocument xDoc = new XDocument();
+
+            XElement sam = new XElement("person");
+            XAttribute samAttrName = new XAttribute("name", "Sam");
+            XElement samCompanyElem = new XElement("company", "Oracle");
+            XElement samAgeElem = new XElement("age", "41");
+
+            sam.Add(samAttrName);
+            sam.Add(samCompanyElem);
+            sam.Add(samAgeElem);
+
+            XElement alex = new XElement("person");
+            XAttribute alexAttrName = new XAttribute("name", "Alex");
+            XElement alexCompanyElem = new XElement("company", "Twitter");
+            XElement alexAgeElem = new XElement("age", "23");
+
+            alex.Add(alexAttrName);
+            alex.Add(alexCompanyElem);
+            alex.Add(alexAgeElem);
+
+            XElement people = new XElement("people");
+            people.Add(sam);
+            people.Add(alex);
+
+            xDoc.Add(people);
+            xDoc.Save("people2.xml");
         }
     }
 }
