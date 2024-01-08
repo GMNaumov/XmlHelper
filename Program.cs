@@ -8,7 +8,8 @@
             systemXml.EditXmlFile();
             systemXml.ReadXmlFile();
             systemXml.UseXpath();
-            systemXml.UseLinqToXml();
+            systemXml.UseLinqToXmlToCreateNewDocument();
+            systemXml.UseLinqToXmlToEditExistDocument();
         }
     }
 }

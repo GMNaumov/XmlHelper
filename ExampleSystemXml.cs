@@ -118,7 +118,7 @@ namespace XmlHelper
         /// <summary>
         /// Пример использования Linq (пространство имен System.Xml.Linq) для работы с XML
         /// </summary>
-        public void UseLinqToXml()
+        public void UseLinqToXmlToCreateNewDocument()
         {
             XDocument xDoc = new XDocument(); // Создаём новый объект, инкапсулирующий документ XML
 
@@ -146,6 +146,35 @@ namespace XmlHelper
 
             xDoc.Add(people); // добавляем к документу корневой элемент people
             xDoc.Save("people2.xml"); // Сохраняем документ
+        }
+
+        public void UseLinqToXmlToEditExistDocument()
+        {
+            XDocument xDoc = XDocument.Load("people.xml");
+            XElement xRoot = xDoc.Element("people");
+
+            XElement sam = new XElement("person"); // Используя базовый класс для представления элемента документа XML - XElement, - создаём новый объект person
+            XAttribute samAttrName = new XAttribute("name", "Sam"); // Создаём новый атрибут, используя класс XAttribute
+            XElement samCompanyElem = new XElement("company", "Oracle");
+            XElement samAgeElem = new XElement("age", "41");
+
+            sam.Add(samAttrName); // Добавляем к элементу sam атрибут samAttrName
+            sam.Add(samCompanyElem); // Добавляем к элементу sam дочерний элемент samCompanyElem
+            sam.Add(samAgeElem); // Добавляем к элементу sam дочерний элемент samAgeElem
+
+            XElement alex = new XElement("person");
+            XAttribute alexAttrName = new XAttribute("name", "Alex");
+            XElement alexCompanyElem = new XElement("company", "Twitter");
+            XElement alexAgeElem = new XElement("age", "23");
+
+            alex.Add(alexAttrName);
+            alex.Add(alexCompanyElem);
+            alex.Add(alexAgeElem);
+
+            xRoot.Add(sam);
+            xRoot.Add(alex);
+
+            xDoc.Save("people.xml");
         }
     }
 }
