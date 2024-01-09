@@ -10,6 +10,7 @@
             systemXml.UseXpath();
             systemXml.UseLinqToXmlToCreateNewDocument();
             systemXml.UseLinqToXmlToEditExistDocument();
+            systemXml.GetDatasetFromXmlByLinq();
         }
     }
 }

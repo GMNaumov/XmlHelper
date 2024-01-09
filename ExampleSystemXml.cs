@@ -7,6 +7,9 @@ namespace XmlHelper
     {
         public void ReadXmlFile()
         {
+            string greeting = String.Format("{0} Using {1} {0}", "".PadRight(24, '*'), "System.Xml for reading XML File");
+            Console.WriteLine(greeting);
+
             List<Person> persons = new List<Person>();
 
             XmlDocument xDoc = new XmlDocument(); // Создаём новый объект для работы с файлом XML
@@ -41,6 +44,8 @@ namespace XmlHelper
             {
                 Console.WriteLine($"{person.Name}. Age:{person.Age}, company:{person.Company}");
             }
+
+            Console.WriteLine("".PadRight(greeting.Length, '-'));
         }
 
         public void EditXmlFile()
@@ -80,6 +85,9 @@ namespace XmlHelper
         /// </summary>
         public void UseXpath()
         {
+            string greeting = String.Format("{0} Using {1} {0}", "".PadRight(24, '*'), "XPath to process XML File");
+            Console.WriteLine(greeting);
+
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load("people.xml");
             XmlElement? xRoot = xDoc.DocumentElement;
@@ -113,6 +121,8 @@ namespace XmlHelper
                     Console.WriteLine(node.InnerText);
                 }
             }
+
+            Console.WriteLine("".PadRight(greeting.Length, '-'));
         }
 
         /// <summary>
@@ -175,6 +185,48 @@ namespace XmlHelper
             xRoot.Add(alex);
 
             xDoc.Save("people.xml");
+        }
+
+        public void GetDatasetFromXmlByLinq()
+        {
+            string greeting = String.Format("{0} Using {1} {0}", "".PadRight(24, '*'), "Linq-to-XML to process XML File");
+            Console.WriteLine(greeting);
+
+            XDocument xDoc = XDocument.Load("people.xml");
+
+            XElement? people = xDoc.Element("people");
+
+            if (people is not null)
+            {
+                foreach (XElement person in people.Elements("person"))
+                {
+                    XAttribute? name = person.Attribute("name");
+                    XElement? company = person.Element("company");
+                    XElement? age = person.Element("age");
+
+                    Console.WriteLine($"Person: {name?.Value}. Company - {company?.Value}, age - {age?.Value}");
+                }
+            }
+
+            var nhc = xDoc.Element("people")?
+                .Elements("person")
+                .Where(p => p.Element("company")?.Value.ToLower() == "nhc")
+                .Select(p => new
+                {
+                    name = p.Attribute("name")?.Value,
+                    company = p.Element("company")?.Value,
+                    age = p.Element("age")?.Value
+                });
+
+            if (nhc is not null)
+            {
+                foreach (var person in nhc)
+                {
+                    Console.WriteLine($"I've found him! His name is {person.name}, he works at {person.company} and he is {person.age} years old!");
+                }
+            }
+
+            Console.WriteLine("".PadRight(greeting.Length, '-'));
         }
     }
 }
