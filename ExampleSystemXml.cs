@@ -1,5 +1,6 @@
 ﻿using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace XmlHelper
 {
@@ -224,6 +225,23 @@ namespace XmlHelper
                 {
                     Console.WriteLine($"I've found him! His name is {person.name}, he works at {person.company} and he is {person.age} years old!");
                 }
+            }
+
+            Console.WriteLine("".PadRight(greeting.Length, '-'));
+        }
+
+        public void SerializeXmlExample()
+        {
+            string greeting = String.Format("{0} Using {1} {0}", "".PadRight(24, '*'), "XmlSerializer to serialize data");
+            Person p = new Person() { Name = "Jeff", Company = "Amazon", Age = 55 };
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Person));
+
+            using (FileStream fs = new FileStream("person3.xml", FileMode.OpenOrCreate))
+            {
+                xmlSerializer.Serialize(fs, p);
+
+                Console.WriteLine("Object person has been serialized to person3.xml file");
             }
 
             Console.WriteLine("".PadRight(greeting.Length, '-'));

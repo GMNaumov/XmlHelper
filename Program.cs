@@ -11,6 +11,7 @@
             systemXml.UseLinqToXmlToCreateNewDocument();
             systemXml.UseLinqToXmlToEditExistDocument();
             systemXml.GetDatasetFromXmlByLinq();
+            systemXml.SerializeXmlExample();
         }
     }
 }
