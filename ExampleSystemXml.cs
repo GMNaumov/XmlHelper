@@ -233,6 +233,7 @@ namespace XmlHelper
         public void SerializeXmlExample()
         {
             string greeting = String.Format("{0} Using {1} {0}", "".PadRight(24, '*'), "XmlSerializer to serialize data");
+            Console.WriteLine(greeting);
             Person p = new Person() { Name = "Jeff", Company = "Amazon", Age = 55 };
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Person));
@@ -242,6 +243,21 @@ namespace XmlHelper
                 xmlSerializer.Serialize(fs, p);
 
                 Console.WriteLine("Object person has been serialized to person3.xml file");
+            }
+
+            Console.WriteLine("".PadRight(greeting.Length, '-'));
+        }
+
+        public void DeserializeXmlExample() 
+        {
+            string greeting = String.Format("{0} Using {1} {0}", "".PadRight(24, '*'), "XmlSerializer to deserialize data");
+            Console.WriteLine(greeting);
+            XmlSerializer xmlSerializer = new XmlSerializer (typeof(Person));
+
+            using (FileStream fs = new FileStream("person3.xml", FileMode.OpenOrCreate))
+            {
+                Person? p = xmlSerializer.Deserialize(fs) as Person;
+                Console.WriteLine($"Data deserialized from person3.xml: Name - {p.Name}, Company - {p.Company}, Age - {p.Age}");
             }
 
             Console.WriteLine("".PadRight(greeting.Length, '-'));

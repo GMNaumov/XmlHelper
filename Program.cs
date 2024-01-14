@@ -12,6 +12,7 @@
             systemXml.UseLinqToXmlToEditExistDocument();
             systemXml.GetDatasetFromXmlByLinq();
             systemXml.SerializeXmlExample();
+            systemXml.DeserializeXmlExample();
         }
     }
 }
