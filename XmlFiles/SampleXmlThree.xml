@@ -6,7 +6,7 @@
     <year>2005</year>
     <price>30.00</price>
   </book>
-  <book category="children">
+  <book category="children"> <!--ВСЕ атрибуты тегов XML должны помещаться внутри кавычек - строки, числа, даты и прочее-->
     <title lang="en">Harry Potter</title>
     <author>J K. Rowling</author>
     <year>2005</year>
