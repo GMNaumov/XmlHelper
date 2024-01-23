@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <boostore>
-  <book category="cooking">
-    <title lang="en">Everyday Italian</title>
-    <author>Giada De Laurntiis</author>
-    <year>2005</year>
+  <book category="cooking"> <!--Правило: имя элемента не может начинаться с 'xml', в любых вариациях регистра-->
+    <title lang="en">Everyday Italian</title> <!--XML элемент включает ВСЁ содержимое, от начального тега элемента до его закрывающего тега. Содержимое может включать: другие элементы, текстовый контент, атрибуты, или вообще всё это с комментариями сверху-->
+    <author>Giada De Laurntiis</author> <!--Правило: имя элемента не может содержать пробелы-->
+    <year>2005</year> <!--Символы, которых следует избегать в именах элементов: минус (-), дефис (-), точка (.), двоеточие (:). Особое внимание на двоеточие - оно зарезервировано для пространств имён, с ним можно огрести нормальных проблем-->
     <price>30.00</price>
   </book>
   <book category="children"> <!--ВСЕ атрибуты тегов XML должны помещаться внутри кавычек - строки, числа, даты и прочее-->
@@ -14,7 +14,7 @@
   </book>
   <book category="web">
     <title lang="en">XQuery Kick Start</title>
-    <author>James McGovern</author>
+    <author>James    McGovern</author> <!--XML сохраняет все пробельные символы (например, несколько пробелов, идущих подряд), в отличии от HTML, где подобная история будет обрезана до одного пробела-->
     <author>Per Bithner</author>
     <author>Kurt Cagle</author>
     <author>James Linn</author>
@@ -22,7 +22,7 @@
     <year>2003</year>
     <price>49.99</price>
   </book>
-  <book category="cooking" cover="paperback">
+  <book category="cooking" cover="paperback"> <!--Что важно знать про атрибуты: а) не могут содержать массивы значений, б) не могут содержать структурную информацию, в) сложно поддаются расширению-->
     <title lang="en">Learning XML</title>
     <author>Erik T. Ray</author>
     <year>2003</year>
