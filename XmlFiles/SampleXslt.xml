@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> <!--XSLT - это язык XML, позволяющий преобразовывать документы XML в другие форматы-->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"> <!--Можно заметить, что в данном документе многие теги являются тегами HTML-->
+  <xsl:template match="/"> <!--Однако теги, имеющие префикс xsl:..., относятся к пространству имён XSLT-->
+    <html>
+      <body>
+        <h2>My CD collection</h2>
+        <table border="1">
+          <tr>
+            <th style="text-align:left">Title</th>
+            <th style="text-align:left">Artists</th>
+          </tr>
+          <xsl:for-each select="catalog/cd">
+            <tr>
+              <td>
+                <xsl:value-of select="title"/>  
+              </td>
+              <td>
+                <xsl:value-of select="artist"/>
+              </td>
+            </tr>
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>

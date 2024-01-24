@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root> <!--Пространства имён могут определяться в корневом элементе XML, но это необязательно - можно использовать любой элемент-->
+  <h:table xmlns:h="http://www.w3.org/TR/html4/"> <!--Для использования в одном файле XML одинаковых тегов для различных сущностей применяются пространства имён и префиксы-->
+    <h:tr> <!--Attention! Пространства имён не носят какой-либо значимой информации для всевозможных парсеров XMl-->
+      <h:td>Apples</h:td>
+      <h:td>Bananas</h:td>
+    </h:tr>
+  </h:table>
+  <f:table xmlns:f="http://www.w3schools.com/furniture"> <!--Пространство имён определяется в атрибуте xmlns:...-->
+    <f:name>Africana coffee table</f:name>
+    <f:width>80</f:width>
+    <f:length>120</f:length>
+  </f:table>
+</root>
