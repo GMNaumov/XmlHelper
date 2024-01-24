@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<breakfast_menu>
-  <food>
+﻿<?xml version="1.0" encoding="utf-8" ?> <!--В прологе определяется кодировка документа XML. Золотым стандартом для чуть менее, чем всего, является кодировка utf-8-->
+<breakfast_menu> <!--В ряде случаев XML может использовать другие кодировки, например, Windows-1251 (привет, Интермех!). В этом случае нужно быть готовым повозиться с корректной интерпретацией инфомрации из файла-->
+  <food> <!--В общем, используй в своих файлах XML кодировку utf-8, и твои волосы будут мягкими и шелковистыми!-->
     <name>Belgian Waffles</name>
     <price>$5.95</price>
     <description>Two of our famous Begian Waffles with plenty of real maple syrup</description>
