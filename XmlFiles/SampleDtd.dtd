@@ -1,0 +1,10 @@
+<!--Пример файла определения типа документа DTD. Просто, чтобы знать, что такое существует в природе-->
+<!DOCTYPE note
+[
+
+<!ELEMENT note (to,from,heading,body)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+]>

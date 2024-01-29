@@ -6,11 +6,11 @@
     <description>Two of our famous Begian Waffles with plenty of real maple syrup</description>
     <calories>650</calories>
   </food>
-  <food>
-    <name>Strawberry Belgian Waffles</name>
-    <price>$7.95</price>
-    <description>Light Belgian waffles covered with strawberries and whipped cream</description>
-    <calories>900</calories>
+  <food> <!--Спецификации W3C устанавливают жесткие требования к структуре файлов XML-->
+    <name>Strawberry Belgian Waffles</name> <!--По степени "строгости" можно разделить СИНТАКСИЧЕСКИ ВЕРНЫЕ и ВАЛИДНЫЕ файлы XML-->
+    <price>$7.95</price> <!--Синтаксически верным может быть почти любой файл, при соблюдении базовых правил: корневой элемент, закрывающий тег, последовательность вложенности и всё прочее не очень интересное-->
+    <description>Light Belgian waffles covered with strawberries and whipped cream</description> <!--Валидным является файл XML, который: а) является синтаксически верным, б) соответствует определённому типу документов (или структуре)-->
+    <calories>900</calories> <!--Существует два вида описания типа документов (или структуры) файла XML: 1) DTD (фу и руки с мылом помыть), 2) XML-схема (она же XSD) - стильно, модно, молодёжно-->
   </food>
   <food>
     <name>Berry-Berry Belgian Waffles</name>

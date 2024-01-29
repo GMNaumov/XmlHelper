@@ -1,18 +1,21 @@
-﻿namespace XmlHelper
+﻿using System.IO.Compression;
+using XmlHelper.XmlFileProcessor;
+using XmlHelper.XmlFileProcessor.IpsXmlElements;
+
+namespace XmlHelper
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            ExampleSystemXml systemXml = new ExampleSystemXml();
-            systemXml.EditXmlFile();
-            systemXml.ReadXmlFile();
-            systemXml.UseXpath();
-            systemXml.UseLinqToXmlToCreateNewDocument();
-            systemXml.UseLinqToXmlToEditExistDocument();
-            systemXml.GetDatasetFromXmlByLinq();
-            systemXml.SerializeXmlExample();
-            systemXml.DeserializeXmlExample();
+            XmlFileCreator creator = new XmlFileCreator();
+
+            creator.CreateXmlFile("MetaDataBrief.xml", new MetaDataBrief());
+            creator.CreateXmlFile("Objects.xml", new Objects());
+            creator.CreateXmlFile("Relations.xml", new Relations());
+
+
+            var zipFile = ZipFile.Open("import.zip", ZipArchiveMode.Create);
         }
     }
 }
